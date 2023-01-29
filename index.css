@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #fbfeff;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, b {
+  font-weight: 500;
+}
+
+h3, h4 {
+  margin-bottom: .5rem;
+  font-weight: 500;
+}
+
+p, ul {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style-position: outside;
+  margin-left: 25px;
+}
+
+.container {
+  position: relative;
+  padding-top: 3rem;
+  width: 75%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+svg {
+  margin: 1rem 0;
+  overflow: visible;
+}
+
+table {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+button {
+  margin-bottom: 3rem;
+  border: 1px solid black;
+  background: white;
+  padding: 1rem;
+  box-shadow: 2px 3px 0 black;
+  border-radius: 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.25rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(2px);
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 1px 0 black;
+}
+
+input, select {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+input:focus {
+  outline: none;
+}
