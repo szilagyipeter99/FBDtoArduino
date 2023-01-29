@@ -23,6 +23,7 @@ a:hover {
 
 h1, h2, b {
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 h3, h4 {
