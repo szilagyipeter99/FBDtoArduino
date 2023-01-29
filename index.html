@@ -10,8 +10,6 @@
 </head>
 
 <body>
-
-
   <div class="search-area" id="searchArea" style="display: none;">
     <input type="text" id="gateSearchInput" onkeyup="gateSearch()">
     <div id="gateButtonsSearch">
@@ -34,15 +32,8 @@
       <button type="button" name="button" onclick="addBlock('VAR', 1, 1)" style="display: none;">VAR</button>
     </div>
   </div>
-
-
-
-
-
   <div class="container">
-
     <h1 class="main-title">FBD-Arduino fordító</h1>
-
     <div class="eszkoztar">
       <div id="gateButtons">
         <button type="button" name="button" id="newBlock">+ Blokk</button>
@@ -64,7 +55,6 @@
         <button type="button" name="button" onclick="addBlock('NODE', 1, 2)">NODE</button>
         <button type="button" name="button" onclick="addBlock('VAR', 1, 1)">VAR</button>
       </div>
-
       <div>
         <button type="button" name="button" onclick="cancelPointers()">&nbsp;&#10005;&nbsp;</button>
         <button type="button" name="button" onclick="addInp()" style="box-shadow: 2px 3px 0 red;">+ Bemenet</button>
@@ -76,8 +66,6 @@
         <button type="button" name="button" onclick="scan()">Kód generálása</button>
       </div>
     </div>
-
-
     <div class="io-tables">
       <table id="inputsTable">
         <tr>
@@ -86,7 +74,6 @@
           <td> <button type="button" onclick="removeIO(this)" name="button">X</button> </td>
         </tr>
       </table>
-
       <table id="outputsTable">
         <tr>
           <td><input type="text" value="output0"></td>
@@ -95,39 +82,23 @@
         </tr>
       </table>
     </div>
-
     <div class="fbd-network" id="networkCode">
-
       <div class="lines">
         <svg width="100%" height="200">
         </svg>
       </div>
-
-      <div class="pointers">
-      </div>
-
-      <div class="fbd-network-row">
-
-      </div>
-
+      <div class="pointers"></div>
+      <div class="fbd-network-row"></div>
       <div class="background-extend"></div>
-
     </div>
-
     <div class="ready-code">
       <button type="button" name="button" onclick="copyCode()">Másolás</button>
       <textarea id="finishedCode" readonly>
     A kód itt fog megjelenni...
     </textarea>
     </div>
-
-
-
-
   </div>
-
   <script src="../scripts/index.js" charset="utf-8"></script>
   <script src="fbd.js" charset="utf-8"></script>
 </body>
-
 </html>
