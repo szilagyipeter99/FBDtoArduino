@@ -1,0 +1,372 @@
+.fbd-network {
+  min-width: calc(100% - 40px);
+  margin-left: 20px;
+  width: fit-content;
+  height: fit-content;
+  background: rgb(245, 245, 245);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.fbd-network .background-extend {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: rgb(245, 245, 245);
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  z-index: -99;
+}
+
+/* .fbd-network::after {
+  display: block;
+  height: 20px;
+  width: 500px;
+  background: none;
+  content: ' ';
+} */
+
+
+.fbd-network-row {
+  width: 100%;
+  height: fit-content;
+  min-height: 20px;
+  display: flex;
+  position: relative;
+}
+
+.fbd-gate-1-1, .fbd-gate-2-1, .fbd-gate-2-2, .fbd-gate-1-2{
+  z-index: 96;
+  pointer-events: none;
+}
+
+.fbd-gate-container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: 10px 10px;
+}
+
+.fbd-gate-input-labels {
+  text-align: right;
+}
+
+.fbd-gate-1-1 .fbd-gate-input-labels p, .fbd-gate-1-2 .fbd-gate-input-labels p, .fbd-gate-1-1 .fbd-gate-output-labels p, .fbd-gate-2-1 .fbd-gate-output-labels p {
+  line-height: 77px;
+  margin: 0;
+}
+
+.fbd-gate-2-1 .fbd-gate-input-labels p, .fbd-gate-1-2 .fbd-gate-output-labels p, .fbd-gate-2-2 .fbd-gate-input-labels p, .fbd-gate-2-2 .fbd-gate-output-labels p {
+  line-height: 38px;
+  margin-bottom: 1px;
+}
+
+
+.fbd-gate-body {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.fbd-gate-body-input {
+  width: 10px;
+  height: 2px;
+  background: black;
+  position: absolute;
+  left: 0;
+  border-radius: 1px;
+}
+
+.fbd-gate-2-1 .fbd-gate-body-input:nth-child(1), .fbd-gate-1-2 .fbd-gate-body-output:nth-child(3), .fbd-gate-2-2 .fbd-gate-body-input:nth-child(1), .fbd-gate-2-2 .fbd-gate-body-output:nth-child(4) {
+  top: 19px;
+}
+
+.fbd-gate-2-1 .fbd-gate-body-input:nth-child(2), .fbd-gate-1-2 .fbd-gate-body-output:nth-child(4), .fbd-gate-2-2 .fbd-gate-body-input:nth-child(2), .fbd-gate-2-2 .fbd-gate-body-output:nth-child(5) {
+  bottom: 19px;
+}
+
+.fbd-gate-1-1 .fbd-gate-body-input:nth-child(1), .fbd-gate-1-2 .fbd-gate-body-input:nth-child(1), .fbd-gate-1-1 .fbd-gate-body-output:nth-child(3), .fbd-gate-2-1 .fbd-gate-body-output:nth-child(4) {
+  top: 39px;
+}
+
+
+.fbd-gate-body-rect {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 60px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid black;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  padding-top: 0.35rem;
+}
+
+
+.fbd-gate-1-1 .fbd-gate-body-rect {
+  top: 20px;
+  height: 40px;
+}
+
+.fbd-gate-1-2 .fbd-gate-body-rect {
+  top: 0;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 0px solid black;
+  padding-top: 1.8rem;
+  font-size: 1rem;
+}
+
+
+.fbd-gate-body-output {
+  width: 10px;
+  height: 2px;
+  background: black;
+  position: absolute;
+  right: 0;
+  border-radius: 1px;
+}
+
+.fbd-gate-output-labels {
+  text-align: left;
+}
+
+.fbd-gate-container input {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  width: 50px;
+  background: none;
+  border: none;
+  padding: 2px;
+  pointer-events: all;
+}
+
+.fbd-gate-container .fbd-gate-input-labels input {
+  text-align: right;
+}
+
+.fbd-gate-container input:focus {
+  background: rgb(255, 255, 255);
+  overflow: visible;
+}
+
+.eszkoztar button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.eszkoztar a {
+  margin-bottom: 1rem;
+  border: 1px solid black;
+  background: white;
+  padding: 0.5rem;
+  box-shadow: 2px 3px 0 black;
+  border-radius: 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+}
+
+.eszkoztar {
+  position: fixed;
+  padding: 1rem 1rem 0;
+  bottom: 9px;
+  left: 12px;
+  border-radius: 5px;
+  z-index: 99;
+  background: white;
+  border: 1px solid black;
+}
+
+.pointers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 97;
+}
+
+.pointers .pointer-body {
+  position: absolute;
+  top: 82px;
+  left: 232px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 4px solid lightgrey;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.pointers .pointer-body:hover {
+  cursor: pointer;
+  border: 6px solid rgb(235,235,235);
+  transform: scale(1.1);
+}
+
+.pointers .pointer-body.active {
+  border: 4px solid orange;
+}
+
+
+.pointers .micro-pointer-body {
+  position: absolute;
+  top: 82px;
+  left: 232px;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.pointers .micro-pointer-body:hover {
+  cursor: pointer;
+  border: 3px solid black;
+  transform: scale(1.1);
+}
+
+.pointers .micro-pointer-body.active {
+  border: 2px solid orange;
+  background: white;
+}
+
+.lines {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 95;
+}
+
+.lines svg {
+  margin: 0;
+  stroke: orange;
+  stroke-width: 2;
+  fill: none;
+}
+
+.lines svg path {
+  transition: 0.2s;
+  z-index: 95;
+}
+
+.lines svg path:hover {
+  stroke: lightblue;
+  stroke-width: 4;
+}
+
+.io-tables {
+  margin-bottom: 3rem;
+}
+
+#inputsTable {
+  margin-bottom: 0.5rem;
+}
+
+#inputsTable td, #outputsTable td {
+  padding: 1px 3px;
+}
+
+#inputsTable input, #outputsTable input {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  width: 180px;
+  background: none;
+  border: none;
+  padding: 0;
+  pointer-events: all;
+}
+
+#inputsTable td:nth-child(2) input, #outputsTable td:nth-child(2) input {
+  width: 35px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#inputsTable td:last-child, #outputsTable td:last-child {
+  border: none;
+  text-align: center;
+  padding-left: 0.5rem;
+}
+
+#inputsTable td button, #outputsTable td button {
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0.1rem;
+  color: lightgrey;
+  font-size: 1rem;
+}
+
+#inputsTable input {
+  color: red;
+}
+
+#outputsTable input {
+  color: green;
+}
+
+.ready-code {
+  position: relative;
+  margin-top: 4rem;
+}
+
+.ready-code button {
+  position: absolute;
+  top:20px;
+  right: 30px;
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+#finishedCode {
+  width: 100%;
+  outline: none;
+  height: 360px;
+  resize: none;
+  margin-bottom: 12rem;
+  background: rgb(52,52,52);
+  color: white;
+  font-size: 0.8rem;
+  padding: 2rem;
+  border-radius: 5px;
+  tab-size: 3;
+}
+
+
+.search-area {
+  width: 120px;
+  background: rgba(200,200,200,0.3);
+  padding: 0.5rem;
+  border-radius: 12px;
+  z-index: 999;
+}
+
+#searchArea {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.search-area input {
+  font-family: 'Roboto Mono', monospace;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.search-area button {
+  box-shadow: none;
+  border: none;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.1rem;
+  border-radius: 8px;
+  margin-bottom: 3px;
+  background: rgb(245, 245, 245);
+}

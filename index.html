@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hu" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>FBD-Arduino fordító</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="fbd.css">
+</head>
+
+<body>
+
+
+  <div class="search-area" id="searchArea" style="display: none;">
+    <input type="text" id="gateSearchInput" onkeyup="gateSearch()">
+    <div id="gateButtonsSearch">
+      <button type="button" name="button" onclick="addBlock('NOT', 1, 1)" style="display: none;">NOT</button>
+      <button type="button" name="button" onclick="addBlock('AND', 2, 1)" style="display: none;">AND</button>
+      <button type="button" name="button" onclick="addBlock('NAND', 2, 1)" style="display: none;">NAND</button>
+      <button type="button" name="button" onclick="addBlock('OR', 2, 1)" style="display: none;">OR</button>
+      <button type="button" name="button" onclick="addBlock('NOR', 2, 1)" style="display: none;">NOR</button>
+      <button type="button" name="button" onclick="addBlock('XOR', 2, 1)" style="display: none;">XOR</button>
+      <button type="button" name="button" onclick="addBlock('TON', 2, 2)" style="display: none;">TON</button>
+      <button type="button" name="button" onclick="addBlock('TOF', 2, 2)" style="display: none;">TOF</button>
+      <button type="button" name="button" onclick="addBlock('INC', 2, 1)" style="display: none;">INC</button>
+      <button type="button" name="button" onclick="addBlock('DT3', 1, 1)" style="display: none;">DT3</button>
+      <button type="button" name="button" onclick="addBlock('DT4', 1, 1)" style="display: none;">DT4</button>
+      <button type="button" name="button" onclick="addBlock('GT', 2, 1)" style="display: none;">GT</button>
+      <button type="button" name="button" onclick="addBlock('LT', 2, 1)" style="display: none;">LT</button>
+      <button type="button" name="button" onclick="addBlock('RS', 2, 1)" style="display: none;">RS</button>
+      <button type="button" name="button" onclick="addBlock('SR', 2, 1)" style="display: none;">SR</button>
+      <button type="button" name="button" onclick="addBlock('NODE', 1, 2)" style="display: none;">NODE</button>
+      <button type="button" name="button" onclick="addBlock('VAR', 1, 1)" style="display: none;">VAR</button>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="container">
+
+    <h1 class="main-title">FBD-Arduino fordító</h1>
+
+    <div class="eszkoztar">
+      <div id="gateButtons">
+        <button type="button" name="button" id="newBlock">+ Blokk</button>
+        <button type="button" name="button" onclick="addBlock('NOT', 1, 1)">NOT</button>
+        <button type="button" name="button" onclick="addBlock('AND', 2, 1)">AND</button>
+        <button type="button" name="button" onclick="addBlock('NAND', 2, 1)">NAND</button>
+        <button type="button" name="button" onclick="addBlock('OR', 2, 1)">OR</button>
+        <button type="button" name="button" onclick="addBlock('NOR', 2, 1)">NOR</button>
+        <button type="button" name="button" onclick="addBlock('XOR', 2, 1)">XOR</button>
+        <button type="button" name="button" onclick="addBlock('TON', 2, 2)">TON</button>
+        <button type="button" name="button" onclick="addBlock('TOF', 2, 2)">TOF</button>
+        <button type="button" name="button" onclick="addBlock('INC', 2, 1)">INC</button>
+        <button type="button" name="button" onclick="addBlock('DT3', 1, 1)">DT3</button>
+        <button type="button" name="button" onclick="addBlock('DT4', 1, 1)">DT4</button>
+        <button type="button" name="button" onclick="addBlock('GT', 2, 1)">GT</button>
+        <button type="button" name="button" onclick="addBlock('LT', 2, 1)">LT</button>
+        <button type="button" name="button" onclick="addBlock('RS', 2, 1)">RS</button>
+        <button type="button" name="button" onclick="addBlock('SR', 2, 1)">SR</button>
+        <button type="button" name="button" onclick="addBlock('NODE', 1, 2)">NODE</button>
+        <button type="button" name="button" onclick="addBlock('VAR', 1, 1)">VAR</button>
+      </div>
+
+      <div>
+        <button type="button" name="button" onclick="cancelPointers()">&nbsp;&#10005;&nbsp;</button>
+        <button type="button" name="button" onclick="addInp()" style="box-shadow: 2px 3px 0 red;">+ Bemenet</button>
+        <button type="button" name="button" onclick="addOut()" style="box-shadow: 2px 3px 0 green;">+ Kimenet</button>
+        <button type="button" name="button" onclick="addPointersToDelete()">Törlés</button>
+        <a href="" download="ArduinoProgram.szp" id="download">Mentés</a>
+        <input type="file" onchange="loadFile(this.files[0])" id="fileSelect" style="display:none;">
+        <button type="button" name="button" onclick="document.getElementById('fileSelect').click();">Feltöltés</button>
+        <button type="button" name="button" onclick="scan()">Kód generálása</button>
+      </div>
+    </div>
+
+
+    <div class="io-tables">
+      <table id="inputsTable">
+        <tr>
+          <td><input type="text" value="input0"></td>
+          <td><input type="text" value="0"></td>
+          <td> <button type="button" onclick="removeIO(this)" name="button">X</button> </td>
+        </tr>
+      </table>
+
+      <table id="outputsTable">
+        <tr>
+          <td><input type="text" value="output0"></td>
+          <td><input type="text" value="0"></td>
+          <td> <button type="button" onclick="removeIO(this)" name="button">X</button> </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="fbd-network" id="networkCode">
+
+      <div class="lines">
+        <svg width="100%" height="200">
+        </svg>
+      </div>
+
+      <div class="pointers">
+      </div>
+
+      <div class="fbd-network-row">
+
+      </div>
+
+      <div class="background-extend"></div>
+
+    </div>
+
+    <div class="ready-code">
+      <button type="button" name="button" onclick="copyCode()">Másolás</button>
+      <textarea id="finishedCode" readonly>
+    A kód itt fog megjelenni...
+    </textarea>
+    </div>
+
+
+
+
+  </div>
+
+  <script src="../scripts/index.js" charset="utf-8"></script>
+  <script src="fbd.js" charset="utf-8"></script>
+</body>
+
+</html>
